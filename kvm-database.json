@@ -1,0 +1,46 @@
+{
+  "kvms": [
+    {
+      "id": 1,
+      "device_name": "Dell iDRAC 9",
+      "manufacturer": "Dell", 
+      "vid_pid": "413C:A102",
+      "mac_prefix": "18:66:DA",
+      "model": "iDRAC9",
+      "firmware_version": "4.40.00.00",
+      "default_port": 443,
+      "web_interface_path": "/",
+      "auth_method": "Basic Auth",
+      "vulnerabilities": "CVE-2021-21514",
+      "source_url": "https://dell.com/support/manuals/idrac9",
+      "date_added": "2025-08-20",
+      "last_updated": "2025-08-20",
+      "active_scanning": true,
+      "notes": "Default admin/calvin credentials"
+    },
+    {
+      "id": 2,
+      "device_name": "HP iLO 5",
+      "manufacturer": "HP",
+      "vid_pid": "03F0:1027", 
+      "mac_prefix": "94:57:A5",
+      "model": "iLO5",
+      "firmware_version": "2.78",
+      "default_port": 443,
+      "web_interface_path": "/",
+      "auth_method": "Basic Auth", 
+      "vulnerabilities": "CVE-2020-7200",
+      "source_url": "https://support.hpe.com/ilo5",
+      "date_added": "2025-08-20",
+      "last_updated": "2025-08-20", 
+      "active_scanning": true,
+      "notes": "Default admin/password"
+    }
+  ],
+  "scan_results": [],
+  "metadata": {
+    "last_discovery_scan": null,
+    "last_security_scan": null,
+    "total_kvms": 2
+  }
+}
