@@ -1,0 +1,89 @@
+{
+  "scanners": {
+    "shodan": {
+      "enabled": true,
+      "monthly_quota": 50,
+      "queries_used": 0,
+      "priority": "high",
+      "last_reset": "2025-09-01",
+      "api_url": "https://api.shodan.io/shodan/host/search",
+      "queries": [
+        "port:623",
+        "port:443 IPMI",
+        "port:443 iDRAC",
+        "port:443 iLO"
+      ]
+    },
+    "zoomeye": {
+      "enabled": true,
+      "monthly_quota": 10000,
+      "queries_used": 0,
+      "priority": "high",
+      "last_reset": "2025-09-01", 
+      "api_url": "https://api.zoomeye.org/host/search",
+      "queries": [
+        "app:IPMI",
+        "app:iDRAC", 
+        "app:iLO"
+      ]
+    },
+    "censys": {
+      "enabled": true,
+      "monthly_quota": 250,
+      "queries_used": 0,
+      "priority": "medium",
+      "last_reset": "2025-09-01",
+      "api_url": "https://search.censys.io/api/v2/hosts/search",
+      "queries": [
+        "services.service_name: IPMI",
+        "services.port: 623"
+      ]
+    },
+    "binaryedge": {
+      "enabled": true,
+      "monthly_quota": 250,
+      "queries_used": 0,
+      "priority": "medium", 
+      "last_reset": "2025-09-01",
+      "api_url": "https://api.binaryedge.io/v2/query/search",
+      "queries": [
+        "port:623",
+        "web.title:iDRAC"
+      ]
+    },
+    "criminalip": {
+      "enabled": false,
+      "monthly_quota": 100,
+      "queries_used": 0,
+      "priority": "low",
+      "last_reset": "2025-09-01",
+      "api_url": "https://api.criminalip.io/v1/banner/search",
+      "queries": [
+        "port:623"
+      ]
+    },
+    "fofa": {
+      "enabled": false,
+      "monthly_quota": 100,
+      "queries_used": 0,
+      "priority": "low",
+      "last_reset": "2025-09-01",
+      "api_url": "https://fofa.info/api/v1/search/all",
+      "queries": [
+        "app=\"IPMI\""
+      ]
+    }
+  },
+  "settings": {
+    "max_results_per_query": 100,
+    "company_ip_ranges": [
+      "192.168.1.0/24",
+      "10.0.0.0/8"
+    ],
+    "scan_frequency": {
+      "discovery": "daily",
+      "security": "daily"
+    },
+    "notification_email": "security@yourcompany.com"
+  }
+}
