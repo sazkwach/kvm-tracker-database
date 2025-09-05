@@ -1,76 +1,102 @@
 {
   "scanners": {
     "shodan": {
-      "enabled": true,
+      "enabled": false,
+      "manual_only": true,
       "monthly_quota": 50,
       "queries_used": 0,
-      "priority": "high",
+      "auto_disable_at": 45,
+      "priority": "manual",
+      "requires_confirmation": true,
       "last_reset": "2025-09-01",
       "api_url": "https://api.shodan.io/shodan/host/search",
       "queries": [
-        "port:623",
-        "port:443 IPMI",
-        "port:443 iDRAC",
-        "port:443 iLO"
+        "port:623 country:US",
+        "port:443 \"iDRAC\" country:US",
+        "port:443 \"iLO\" country:US",
+        "IPMI country:US"
       ]
     },
     "zoomeye": {
       "enabled": true,
+      "manual_only": false,
       "monthly_quota": 10000,
       "queries_used": 0,
+      "auto_disable_at": 9500,
       "priority": "high",
+      "requires_confirmation": false,
       "last_reset": "2025-09-01", 
       "api_url": "https://api.zoomeye.org/host/search",
       "queries": [
         "app:IPMI",
         "app:iDRAC", 
-        "app:iLO"
+        "app:iLO",
+        "port:623",
+        "port:443 IPMI"
       ]
     },
     "censys": {
       "enabled": true,
+      "manual_only": false,
       "monthly_quota": 250,
       "queries_used": 0,
+      "auto_disable_at": 230,
       "priority": "medium",
+      "requires_confirmation": false,
       "last_reset": "2025-09-01",
       "api_url": "https://search.censys.io/api/v2/hosts/search",
       "queries": [
         "services.service_name: IPMI",
-        "services.port: 623"
+        "services.port: 623",
+        "services.banner: iDRAC",
+        "services.banner: iLO"
       ]
     },
     "binaryedge": {
       "enabled": true,
+      "manual_only": false,
       "monthly_quota": 250,
       "queries_used": 0,
-      "priority": "medium", 
+      "auto_disable_at": 230,
+      "priority": "medium",
+      "requires_confirmation": false,
       "last_reset": "2025-09-01",
       "api_url": "https://api.binaryedge.io/v2/query/search",
       "queries": [
         "port:623",
-        "web.title:iDRAC"
+        "web.title:iDRAC",
+        "web.title:iLO",
+        "port:443 ipmi"
       ]
     },
     "criminalip": {
       "enabled": false,
+      "manual_only": true,
       "monthly_quota": 100,
       "queries_used": 0,
+      "auto_disable_at": 90,
       "priority": "low",
+      "requires_confirmation": false,
       "last_reset": "2025-09-01",
       "api_url": "https://api.criminalip.io/v1/banner/search",
       "queries": [
-        "port:623"
+        "port:623",
+        "ipmi"
       ]
     },
     "fofa": {
       "enabled": false,
+      "manual_only": true,
       "monthly_quota": 100,
       "queries_used": 0,
+      "auto_disable_at": 90,
       "priority": "low",
+      "requires_confirmation": false,
       "last_reset": "2025-09-01",
       "api_url": "https://fofa.info/api/v1/search/all",
       "queries": [
-        "app=\"IPMI\""
+        "app=\"IPMI\"",
+        "port=\"623\""
       ]
     }
   },
@@ -80,8 +106,16 @@
       "discovery": "daily",
       "security": "daily"
     },
-    "notification_email": "leemhogue@gmail.com",
+    "notification_email": "your-work-email@company.com",
     "export_all_ips": true,
-    "manual_ip_comparison": true
+    "manual_ip_comparison": true,
+    "automated_scanners": ["zoomeye", "censys", "binaryedge"],
+    "manual_scanners": ["shodan", "criminalip", "fofa"],
+    "quota_warnings": {
+      "shodan": 40,
+      "zoomeye": 9000,
+      "censys": 200,
+      "binaryedge": 200
+    }
   }
 }
