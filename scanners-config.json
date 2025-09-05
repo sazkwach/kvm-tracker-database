@@ -76,14 +76,12 @@
   },
   "settings": {
     "max_results_per_query": 100,
-    "company_ip_ranges": [
-      "192.168.1.0/24",
-      "10.0.0.0/8"
-    ],
     "scan_frequency": {
       "discovery": "daily",
       "security": "daily"
     },
-    "notification_email": "security@yourcompany.com"
+    "notification_email": "leemhogue@gmail.com",
+    "export_all_ips": true,
+    "manual_ip_comparison": true
   }
 }
